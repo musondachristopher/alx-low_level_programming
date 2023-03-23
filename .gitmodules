@@ -1,0 +1,3 @@
+[submodule "0x02-functions_nested_loops/0x02-functions_nested_loops/Betty"]
+	path = 0x02-functions_nested_loops/0x02-functions_nested_loops/Betty
+	url = https://github.com/Muzzzo/alx-low_level_programming.git
