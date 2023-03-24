@@ -6,16 +6,16 @@
 * Return: 1 for positive num, -1 for negative num or zero for anything else
 */
 
-int print_sign(int n)
+int print_sign(int r)
 
 {
 
-	if (n > 0)
+	if (r > 0)
 	{
 	_putchar(43);
 	return (1);
 	}
-	else if (n < 0)
+	else if (r < 0)
 	{
 	_putchar(45);
 	return (-1);
