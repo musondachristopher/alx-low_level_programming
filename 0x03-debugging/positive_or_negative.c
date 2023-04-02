@@ -10,8 +10,10 @@
 
 void positive_or_negative(int i)
 {
-	if (i < 0)
-		printf("%d is negative", i);
-	else
-		printf("%d is positive", i);
+	if (i > 0)
+		printf("%d is positiv\ne", i);
+	else if (i < 0)
+		printf("%d is negative\n", i);
+	else if (i == 0)
+		printf("%d is zero\n", i);
 }
