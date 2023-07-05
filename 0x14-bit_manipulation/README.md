@@ -1,1 +1,0 @@
-Ubuntu kukosa bane
