@@ -1,17 +1,16 @@
 #include "hash_tables.h"
 
 /**
- * shash_table_create - it creates a shash table with a given size
- * @size: size of the shash
- *
+ * shash_table_create - it creates a shash table with a given size..
+ * @size: size of the table
  * Return: the created shash table,
- *	or NULL if functions fails
+ *	or NULL if function fails
  */
 shash_table_t *shash_table_create(unsigned long int size)
 {
 	shash_table_t *table;
 	shash_node_t **array;
-	unsigned long int m;
+	unsigned long int n;
 
 	table = malloc(sizeof(shash_table_t));
 	if (table == NULL)
@@ -21,8 +20,8 @@ shash_table_t *shash_table_create(unsigned long int size)
 	if (array == NULL)
 		return (NULL);
 
-	for (m = 0; m < size; m++)
-		array[m] = NULL;
+	for (n = 0; n < size; n++)
+		array[n] = NULL;
 
 	table->array = array;
 	table->size = size;
@@ -34,11 +33,11 @@ shash_table_t *shash_table_create(unsigned long int size)
 
 /**
  * add_n_shash - function adds a node at the
- * beginning of a shash at a given index
+ * begin of a shash at a given index
  * @h: the head of the shash linked list
- * @key: a key
+ * @key: a key of the shash
  * @value: the value to store
- * Return: creatd node
+ * Return: created node
  */
 shash_node_t *add_n_shash(shash_node_t **h, const char *key, const char *value)
 {
@@ -72,7 +71,7 @@ shash_node_t *add_n_shash(shash_node_t **h, const char *key, const char *value)
 }
 
 /**
- * add_i_shash - function adds a node on the DLL of the shash table
+ * add_i_shash - function adds a node on table
  * @ht: a pointer to the table
  * @new: a new node to add
  *
@@ -81,18 +80,18 @@ shash_node_t *add_n_shash(shash_node_t **h, const char *key, const char *value)
 void add_i_shash(shash_table_t *ht, shash_node_t *new)
 {
 	shash_node_t *tmp1, *tmp2;
-	int r;
+	int rt;
 
 	tmp1 = tmp2 = ht->shead;
 
 	while (tmp1 != NULL)
 	{
-		r = strcmp(new->key, tmp1->key);
-		if (r == 0)
+		rt = strcmp(new->key, tmp1->key);
+		if (rt == 0)
 		{
 			return;
 		}
-		else if (r < 0)
+		else if (rt < 0)
 		{
 			new->sprev = tmp1->sprev;
 
@@ -123,12 +122,13 @@ void add_i_shash(shash_table_t *ht, shash_node_t *new)
 
 /**
  * shash_table_set - function adds a hash
- * (key, value)   to a given shash table.
+ *	(key, value) to a given shash table
  * @ht: pointer to the shash table.
  * @key: key of the shash.
- * @value: the valuei
+ * @value: the value to store.
+ *
  * Return: 1 if successes,
- * or 0 if fails.
+ *	or 0 if fails.
  */
 int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 {
@@ -155,8 +155,10 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 
 /**
  * shash_table_get - function  that retrieves a value associated with a key
- * @ht: a pointer
+ *
+ * @ht: a pointer to the shash table.
  * @key: th key of the shash
+ *
  * Return: the value of the shash
  */
 char *shash_table_get(const shash_table_t *ht, const char *key)
@@ -180,12 +182,11 @@ char *shash_table_get(const shash_table_t *ht, const char *key)
 			return (tmp->value);
 		tmp = tmp->next;
 	}
-
 	return (NULL);
 }
 
 /**
- * shash_table_print - it prints the keys and values of the shash table.
+ * shash_table_print - it prints the keys and values of the shash table
  * @ht: a pointer to the shash table.
  * Return: Null.
  */
@@ -215,26 +216,28 @@ void shash_table_print(const shash_table_t *ht)
 /**
  * shash_table_print_rev - function prints the keys and values
  * of the shash table in reverse.
+ *
  * @ht: a pointer to the shash table.
  *
- * Return: NULL
+ * Return: NULL.
  */
 void shash_table_print_rev(const shash_table_t *ht)
 {
 	shash_node_t *tmp;
-	char *septr;
+	char *sepatr;
 
 	if (ht == NULL)
 		return;
 
 	printf("{");
-	septr = "";
+	sepatr = "";
+
 	tmp = ht->stail;
 
 	while (tmp != NULL)
 	{
-		printf("%s'%s': '%s'", septr, tmp->key, tmp->value);
-		septr = ", ";
+		printf("%s'%s': '%s'", sepatr, tmp->key, tmp->value);
+		sepatr = ", ";
 		tmp = tmp->sprev;
 	}
 	printf("}\n");
@@ -242,9 +245,8 @@ void shash_table_print_rev(const shash_table_t *ht)
 
 /**
  * shash_table_delete - function deletes a shash table
- * @ht: a pointer toshash table
- *
- * Return: NULL
+ * @ht: a pointer to the shash table
+ * Return:	NULL
  */
 void shash_table_delete(shash_table_t *ht)
 {
@@ -257,7 +259,7 @@ void shash_table_delete(shash_table_t *ht)
 
 	for (m = 0; m < ht->size; m++)
 	{
-		tmp1 = ht->array[n];
+		tmp1 = ht->array[m];
 		while ((tmp2 = tmp1) != NULL)
 		{
 			tmp1 = tmp1->next;
